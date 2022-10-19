@@ -50,15 +50,22 @@ export const mapFeedbackByType = (data, type) => {
   }
 };
 
-export const calculateFeedbackStatistic = (feedback) => {
+export const calculateFeedbackStatistic = (feedback, type) => {
+  let ratingTotal = type === feedbackTypes.rating ? 1 : undefined;
+  let sentimentTotal = type === feedbackTypes.sentiment ? 0 : undefined;
   let newCount = 0;
 
   for (const item of feedback) {
+    type === feedbackTypes.rating && (ratingTotal += item.rating);
+    type === feedbackTypes.sentiment && (sentimentTotal += item.sentiment);
+
     moment(item.createdAt).isSame(moment(), 'day') && newCount++;
   }
 
   return {
     total: feedback.length,
+    overallRating:feedback.length && type === feedbackTypes.rating ? Math.round(ratingTotal / feedback.length) : undefined,
+    sentimentTotal,
     newCount
   }
 };

@@ -11,8 +11,8 @@ import { calculateFeedbackStatistic, mapFeedbackByType } from './util';
 
 function App() {
   const [feedback, setFeedback] = useState([]);
-  const [feedbackType, setFeedbackType] = useState(feedbackTypes.rating);
   const [feedbackByType, setFeedbackByType] = useState([]);
+  const [feedbackType, setFeedbackType] = useState(feedbackTypes.rating);
 
   useEffect(() => {
     const fetchFeedback = async () => {
@@ -33,7 +33,7 @@ function App() {
 
       <main className="App-main">
         <Card>
-          <FeedbackStatistic { ...calculateFeedbackStatistic(feedbackByType) } />
+          <FeedbackStatistic type={feedbackType} { ...calculateFeedbackStatistic(feedbackByType, feedbackType) } />
           <FeedbackTableSelect value={feedbackType} onSelect={setFeedbackType} />
           <FeedbackTable type={feedbackType} data={feedbackByType} />
         </Card>

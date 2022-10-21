@@ -3,7 +3,6 @@ import { useState } from 'react';
 import moment from 'moment';
 
 const getColumns = (data) => {
-  console.log(data, 'data getColumns()')
   return [
     {
       width: 200,

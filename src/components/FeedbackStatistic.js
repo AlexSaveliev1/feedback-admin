@@ -4,7 +4,6 @@ import { feedbackTypes } from '../constants';
 
 function FeedbackStatistic(props) {
   const { type, total, overallRating, sentimentTotal } = props;
-  console.log(overallRating, 'overallRating');
 
   const getStatistics = () => {
     if (type === feedbackTypes.rating) {
@@ -25,7 +24,7 @@ function FeedbackStatistic(props) {
       return null;
     }
   }
-console.log(overallRating, 'overallRating')
+
   return (
     <Row style={{ marginBottom: 20 }}>
       <Col style={{ marginRight: 80 }}>

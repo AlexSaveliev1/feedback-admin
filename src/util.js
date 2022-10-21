@@ -61,7 +61,7 @@ export const calculateFeedbackStatistic = (feedback, type) => {
 
     moment(item.createdAt).isSame(moment(), 'day') && newCount++;
   }
-console.log(ratingTotal, 'rating total')
+
   return {
     total: feedback.length,
     overallRating:feedback.length && type === feedbackTypes.rating ? Math.round(ratingTotal / feedback.length) : undefined,

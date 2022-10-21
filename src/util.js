@@ -35,7 +35,7 @@ export const mapFeedbackByType = (data, type) => {
     case feedbackTypes.combined: {
       return data
         .filter(item => {
-          return item.hasOwnProperty('suggestion') || Array.isArray(item.reasons)
+          return item.hasOwnProperty('suggestion') && (Array.isArray(item.reasons) && item.reasons.length)
         })
         .map(item => {
           const reasons = item.reasons ? ` (${item.reasons.join(', ')})` : '';

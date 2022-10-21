@@ -15,7 +15,7 @@ export const mapFeedbackByType = (data, type) => {
     }
     case feedbackTypes.sentiment: {
       return data
-        .filter(item => item.hasOwnProperty('sentiment') && item.sentiment)
+        .filter(item => item.hasOwnProperty('sentiment'))
         .map(item => ({
           ...item,
           date: moment(item.createdAt).format('Do MMM'),
